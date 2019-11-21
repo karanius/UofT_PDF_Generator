@@ -25,8 +25,10 @@ const colors = {
   }
 };
 
-function generateHTML(data) {
-  return `<!DOCTYPE html>
+async function generateHTML(x) {
+  const data = await x[0];
+  const json = await x[1];
+  let string = `<!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="UTF-8" />
@@ -49,7 +51,7 @@ function generateHTML(data) {
          margin: 0;
          }
          html, body, .wrapper {
-         height: 100%;
+        
          }
          .wrapper {
          background-color: ${colors[data.color].wrapperBackground};
@@ -88,12 +90,13 @@ function generateHTML(data) {
          font-size: 1.2em;
          }
          .photo-header {
-         position: relative;
-         margin: 0 auto;
-         margin-bottom: -50px;
-         display: flex;
-         justify-content: center;
-         flex-wrap: wrap;
+          position: relative;
+          margin: 0 auto;
+          margin-bottom: -50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
          background-color: ${colors[data.color].headerBackground};
          color: ${colors[data.color].headerColor};
          padding: 10px;
@@ -108,6 +111,8 @@ function generateHTML(data) {
          margin-top: -75px;
          border: 6px solid ${colors[data.color].photoBorderColor};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
+         -webkit-print-color-adjust:exact; 
+          -webkit-filter:opacity(1);
          }
          .photo-header h1, .photo-header h2 {
          width: 100%;
@@ -170,19 +175,23 @@ function generateHTML(data) {
             zoom: .75; 
           } 
          }
-    
+         
+         i{
+          margin: 0px 10px;
+          }
+
          </style>
          </head>
-         <body>  
+         <body style='overflow:hidden' >  
            <div class="col">
              <div class="wrapper">
                <div class="row">
                  <div class="photo-header">
-                     <img src="{{img}}" alt="pic">
+                     <img src="${json.avatar_url}" alt="pic">
                    <h2>HI!</h2>
-                   <h3>My Name Is {{name}}!</h3>
-                   <h4>Currently @ {{lcoation}} </h4>
-                   <nav class="nav-link" > <i class="fas fa-location-arrow"> {{home}}</i>•<i class="fab fa-github"> {{github}}</i>•<i class="fas fa-blog"> {{blog}}</i></nav>
+                   <h3>My Name Is ${json.name}!</h3>
+                   <h4>Currently @ ${json.company} </h4>
+                   <nav class="nav-link" > <i class="fas fa-location-arrow"> ${json.location}</i>•<i class="fab fa-github"> <a href='${json.html_url}'>${json.html_url}</a></i>•<i class="fas fa-blog"> <a href='${json.blog}'>${json.blog}</a></i></nav>
                  </div>
                </div>
              </div>
@@ -191,25 +200,25 @@ function generateHTML(data) {
                  <div class="container">
                  <h6>I build things and teach people to code</h6>
                    <div class="row">
-                     <div class="col"> <div class="card">Public Repositories <br>{{publicRep}}</div> </div>
-                     <div class="col"><div class="card">Followers <br> {{followers}}</div></div>
+                     <div class="col"> <div class="card">Public Repositories <br>${json.public_repos}</div> </div>
+                     <div class="col"><div class="card">Followers <br> ${json.followers}</div></div>
                    </div>
                    <div class="row">
-                     <div class="col"><div class="card">GitHub Stars<br>{{stars}}</div></div>
-                     <div class="col"><div class="card">Following<br>{{following}}</div></div>
+                     <div class="col"><div class="card">GitHub Stars<br>${json.public_gists}</div></div>
+                     <div class="col"><div class="card">Following<br>${json.following}</div></div>
                    </div>
                  </div>
                </main>
              </div>
-               <div class="wrapper"></div>
+               
            </div>
-   
+           <div class="wrapper" style='height:52vh'>
+           </div>
    
          </body>
          </html>
-   
-
 `
-        }
+return string
+}
 
 module.exports= generateHTML;

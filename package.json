@@ -9,7 +9,8 @@
   "author": "Kavian Darvish",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "inquirer": "^7.0.0"
+    "inquirer": "^7.0.0",
+    "nodemon": "^2.0.0",
+    "puppeteer": "^2.0.0"
   }
 }
