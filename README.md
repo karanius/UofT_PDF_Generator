@@ -2,8 +2,6 @@
 
 Node.js application that dynamically generates a PDF profile from a GitHub username.
 
-# [REPO](https://github.com/karanius/pdfGenerator)
-
 ## Table of Contents
 
 1. [About](#about)
