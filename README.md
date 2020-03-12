@@ -4,12 +4,15 @@ Node.js application that dynamically generates a PDF profile from a GitHub usern
 
 ## Table of Contents
 
-1. [About](#about)
-1. [Business Context](#business-context)
-1. [Development Strategy](#development-strategy)
-1. [Built With](#built-with)
-1. [Minimum Requirements](#minimum-requirements)
+- [UofT Full-Stack Web Development Bootcamp Project #7: Developer Profile Generator](#uoft-full-stack-web-development-bootcamp-project-7-developer-profile-generator)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Business Context](#business-context)
+  - [Development Strategy](#development-strategy)
+  - [Built With](#built-with)
+  - [Minimum Requirements](#minimum-requirements)
 
+![](screenShot1.gif)
 ## About
 
 Developer profile generator accepts 2 inputs from the user. GitHub handle and favorite color and dynamically genrates developer's profile landing page including developer's the following:
